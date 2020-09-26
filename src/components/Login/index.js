@@ -1,25 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import "./login.css";
 
 function Login() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <p>
-          Login PAGE
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          LOGIN
-        </a>
-
-        <Link to='/Logout'>Logout</Link>
-
-      </header>
+    <div className = "login">
+      <h1 className = "title">Townhall</h1>
+      <p className="prompt-create-user clickable"> <Link className = "link" to='/Register'>Don't Have an Account?</Link></p>
     </div>
   );
 }
