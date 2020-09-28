@@ -1,23 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import TwilioVideo from "twilio-video";
+
+import StartForm from "./components/StartForm";
+
+import "./App.css";
+
+const Video = ({ token }) => {
+  useEffect(() => {
+    TwilioVideo.connect(token, {
+      video: true,
+      audio: true,
+      name: "test",
+    }).then(() => console.log("succesfully joined room!"));
+  }, [token]);
+
+  return <p>video</p>;
+};
 
 function App() {
+  const [token, setToken] = useState(false);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {!token ? <StartForm storeToken={setToken} /> : <Video token={token} />}
       </header>
     </div>
   );
